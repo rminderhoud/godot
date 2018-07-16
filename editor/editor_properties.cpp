@@ -407,10 +407,12 @@ void EditorPropertyEnum::update_property() {
 	for (int i = 0; i < options->get_item_count(); i++) {
 		String text = options->get_item_text(i);
 		Vector<String> text_split = text.split(":");
-		String name = text_split[1];
-		if (itos(which) == name) {
-			options->select(i);
-			return;
+		if (text_split.size() == 2) {
+			String name = text_split[1];
+			if (itos(which) == name) {
+				options->select(i);
+				return;
+			}
 		}
 	}
 }
